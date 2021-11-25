@@ -1,8 +1,7 @@
 package com.wagner.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +33,21 @@ public class TopicController {
     @RequestMapping("/topics")
     public List<Topic> getAllTopics(){
         return topicService.getAllTopics();
+    }
+
+    // Colocar id entre chaves ({id}) diz ao spring que se trata de uma variavel
+    @RequestMapping("/topics/{id}")
+    // @PathVariable diz ao spring que o parâmetro id = {id}
+    public Topic getTopic(@PathVariable String id){
+        return topicService.getTopic(id);
+
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/topics")
+    public void addTopic(@RequestBody Topic topic){
+
+        topicService.addTopíc(topic);
+
     }
 
 
