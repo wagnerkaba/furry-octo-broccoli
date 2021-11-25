@@ -33,4 +33,19 @@ public class TopicService {
         topics.add(topic);
 
     }
+
+
+    public void updateTopíc(String id, Topic topic) {
+        for (int i =0; i < topics.size(); i++){
+            Topic t = topics.get(i);
+            if (t.getId().equals(id)) {
+                topics.set(i, topic);
+                return;
+            }
+        }
+    }
+
+    public void deleteTopíc(String id) {
+        topics.removeIf(t -> t.getId().equals(id));
+    }
 }
